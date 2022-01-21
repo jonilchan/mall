@@ -8,6 +8,9 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.5.94:8848
+      config:
+        server-addr: 192.168.5.94:8848
+        namespace: ab60430f-a34f-4e51-be39-7185ae449b72
   application:
     name: gulimall-product
 mybatis-plus:
@@ -15,5 +18,10 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 server:
   port: 10000
+logging:
+  level:
+    com.atguigu.gulimall: debug

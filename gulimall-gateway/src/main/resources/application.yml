@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.5.94:8848
+      config:
+        server-addr: 192.168.5.94:8848
+        namespace: a503fc33-c76b-41f4-aadd-0523955b5cb0
+    gateway:
+      routes:
+
+        - id: product_route
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /renren-fast/$\{segment}
+  application:
+    name: gulimall-gateway
+server:
+  port: 88
