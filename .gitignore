@@ -28,6 +28,9 @@ buildNumber.properties
 .springBeans
 .sts4-cache
 
+### GIT ###
+.gitignore
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
