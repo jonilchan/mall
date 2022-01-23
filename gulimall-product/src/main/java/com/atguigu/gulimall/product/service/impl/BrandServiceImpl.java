@@ -1,5 +1,6 @@
 package com.atguigu.gulimall.product.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -11,6 +12,7 @@ import com.atguigu.common.utils.Query;
 import com.atguigu.gulimall.product.dao.BrandDao;
 import com.atguigu.gulimall.product.entity.BrandEntity;
 import com.atguigu.gulimall.product.service.BrandService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("brandService")
@@ -24,6 +26,12 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateDetail(BrandEntity brand) {
+        baseMapper.updateById(brand);
     }
 
 }
