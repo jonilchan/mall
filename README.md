@@ -12,7 +12,7 @@
 
 2. 服务器
 
-   服务器中需要安装myslq、redis和nacos，推荐使用docker安装
+   服务器中需要安装mysql、redis和nacos，推荐使用docker安装。
 
 3. 服务器地址
 
