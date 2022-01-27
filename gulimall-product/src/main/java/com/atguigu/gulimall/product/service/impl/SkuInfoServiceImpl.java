@@ -53,14 +53,14 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         }
         String min = (String) params.get("min");
         if (!StringUtils.isEmpty(min)){
-            wrapper.ge("peice", min);
+            wrapper.ge("price", min);
         }
         String max = (String) params.get("max");
         if (!StringUtils.isEmpty(max)){
             try{
                 BigDecimal bigDecimal = new BigDecimal(max);
                 if (bigDecimal.compareTo(new BigDecimal("0")) == 1){
-                    wrapper.le("peice", max);
+                    wrapper.le("price", max);
                 }
             }catch (Exception e){
 
