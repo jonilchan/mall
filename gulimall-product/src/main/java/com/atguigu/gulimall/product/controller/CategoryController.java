@@ -75,7 +75,7 @@ public class CategoryController {
      */
     @RequestMapping("/update")
     public R update(@RequestBody CategoryEntity category){
-		categoryService.updateById(category);
+		categoryService.updateCascase(category);
         return R.ok();
     }
 
@@ -87,5 +87,4 @@ public class CategoryController {
 		categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
-
 }

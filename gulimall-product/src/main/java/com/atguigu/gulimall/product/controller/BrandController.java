@@ -79,7 +79,7 @@ public class BrandController {
     /**
      * 修改状态
      */
-    @RequestMapping("/update")
+    @RequestMapping("/update/status")
     public R updateStatus(@Validated({UpdateStatusGroup.class}) @RequestBody BrandEntity brand){
         brandService.updateById(brand);
 

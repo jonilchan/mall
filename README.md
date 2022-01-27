@@ -1,37 +1,43 @@
-# gulimall
-
-#### 介绍
-谷粒商城
-
-#### 软件架构
-软件架构说明
+# 谷粒商城
 
 
-#### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 启动配置
 
 
-#### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. 数据库
+
+   创建数据库后，运行所有的数据库文件。
+
+2. 服务器
+
+   服务器中需要安装myslq、redis和nacos，推荐使用docker安装
+
+3. 服务器地址
+
+   商城的服务器地址使用虚拟机。配置网桥后更换nacos的地址。
+
+4. OSS地址
+
+   在renrne-fast-vue中src/components/upload中两个vue文件更换为自己的OSS
+
+   除此之外，得在gulimall-third-party模块中的config配置OSS相关配置。
+
+
+
+
+
+
+
+## 相关文档
+
+
+
+1. 网页API文档
+
+   ```http
+   https://easydoc.net/s/78237135/ZUqEdvA4/hKJTcbfd
+   ```
+
+   

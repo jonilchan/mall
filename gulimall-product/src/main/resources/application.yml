@@ -13,6 +13,9 @@ spring:
         namespace: ab60430f-a34f-4e51-be39-7185ae449b72
   application:
     name: gulimall-product
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:

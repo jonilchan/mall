@@ -3,6 +3,7 @@ package com.atguigu.gulimall.product;
 import com.aliyun.oss.OSSClient;
 import com.atguigu.gulimall.product.entity.BrandEntity;
 import com.atguigu.gulimall.product.service.BrandService;
+import com.atguigu.gulimall.product.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,13 +18,12 @@ class GulimallProductApplicationTests {
     @Autowired
     BrandService brandService;
 
+    @Autowired
+    CategoryService categoryService;
 
     @Test
     void contextLoads() {
-        BrandEntity brandEntity = new BrandEntity();
-        brandEntity.setName("mi");
-        brandService.save(brandEntity);
-        System.out.println("保存成功");
+
     }
 
 
