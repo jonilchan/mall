@@ -1,12 +1,9 @@
 package com.atguigu.gulimall.product.controller;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
-import com.atguigu.gulimall.product.entity.ProductAttrValueEntity;
-import com.atguigu.gulimall.product.service.ProductAttrValueService;
 import com.atguigu.gulimall.product.vo.AttrGroupRelationVo;
 import com.atguigu.gulimall.product.vo.AttrRespVo;
 import com.atguigu.gulimall.product.vo.AttrVo;
@@ -34,15 +31,6 @@ public class AttrController {
 
     @Resource
     private AttrService attrService;
-
-    @Resource
-    private ProductAttrValueService productAttrValueService;
-
-    @GetMapping("/base/listforspu/{spuId}")
-    public R baseAttrListForSpu(@PathVariable("spuId") Long spuId){
-        List<ProductAttrValueEntity> entities = productAttrValueService.baseAttrListForSpu(spuId);
-        return R.ok().put("data", entities);
-    }
 
     @GetMapping("/{attrType}/list/{catelogId}")
     public R baseAttrList(@RequestParam Map<String, Object> params,
@@ -88,17 +76,6 @@ public class AttrController {
     @RequestMapping("/update")
     public R update(@RequestBody AttrVo attr){
 		attrService.updateAttr(attr);
-
-        return R.ok();
-    }
-
-    /**
-     * 修改规格属性（基本信息）
-     */
-    @PostMapping("/update/{spuId}")
-    public R updateSpuAttr(@PathVariable("spuId") Long spuId,
-                           @RequestBody List<ProductAttrValueEntity> entities){
-        productAttrValueService.updateSpuAttr(spuId, entities);
 
         return R.ok();
     }
