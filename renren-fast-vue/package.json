@@ -24,6 +24,7 @@
     "gulp-replace": "1.0.0",
     "gulp-shell": "0.8.0",
     "lodash": "4.17.5",
+    "minio": "^7.0.26",
     "node-sass": "4.13.1",
     "npm": "^6.9.0",
     "pubsub-js": "^1.9.4",

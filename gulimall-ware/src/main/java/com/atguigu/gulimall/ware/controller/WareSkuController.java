@@ -1,15 +1,13 @@
 package com.atguigu.gulimall.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.atguigu.common.to.SkuHasStockTo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gulimall.ware.entity.WareSkuEntity;
 import com.atguigu.gulimall.ware.service.WareSkuService;
@@ -28,20 +26,30 @@ import com.atguigu.common.utils.R;
 @RestController
 @RequestMapping("ware/waresku")
 public class WareSkuController {
+
     @Autowired
     private WareSkuService wareSkuService;
+
+    /**
+     * 查询sku是否有库存
+     * @param skuIds
+     * @return
+     */
+    @PostMapping("/hasstock")
+    public R getSkusHasStock(@RequestBody List<Long> skuIds){
+        List<SkuHasStockTo> vos = wareSkuService.getSkusHasStock(skuIds);
+        return R.ok().put("data", vos);
+    }
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("ware:waresku:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = wareSkuService.queryPage(params);
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息

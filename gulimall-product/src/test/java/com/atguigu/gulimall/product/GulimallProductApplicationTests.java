@@ -7,23 +7,31 @@ import com.atguigu.gulimall.product.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 
+import javax.annotation.Resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.UUID;
 
 @SpringBootTest
 class GulimallProductApplicationTests {
 
-    @Autowired
-    BrandService brandService;
-
-    @Autowired
-    CategoryService categoryService;
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @Test
-    void contextLoads() {
+    void testStringRedisTemplate() {
 
+        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+
+        ops.set("hello", "world" + UUID.randomUUID());
+
+        String hello = ops.get("hello");
+
+        System.out.println(hello);
     }
 
 
