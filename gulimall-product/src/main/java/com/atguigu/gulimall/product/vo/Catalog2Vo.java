@@ -14,7 +14,7 @@ public class Catalog2Vo {
 
     private String catalog1Id;
 
-    private List<Catalog3Vo> catalog3list;
+    private List<Catalog3Vo> catalog3List;
 
     private String id;
 

@@ -7,5 +7,7 @@ spring:
         server-addr: 192.168.5.94:8848
   application:
     name: gulimall-search
+  thymeleaf:
+    cache: false
 server:
   port: 12000

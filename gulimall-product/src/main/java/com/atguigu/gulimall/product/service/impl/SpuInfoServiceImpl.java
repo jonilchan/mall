@@ -277,7 +277,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             esModel.setBrandImg(brandEntity.getLogo());
 
             CategoryEntity categoryEntity = categoryService.getById(sku.getCatalogId());
-            esModel.setCatelogName(categoryEntity.getName());
+            esModel.setCatalogId(categoryEntity.getCatId());
+            esModel.setCatalogName(categoryEntity.getName());
 
             //设置检索属性
             esModel.setAttrs(attrsList);
