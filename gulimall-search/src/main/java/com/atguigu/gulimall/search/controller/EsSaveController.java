@@ -23,8 +23,6 @@ public class EsSaveController {
 
     /**
      * 商家商品
-     * @param skuEsModels
-     * @return
      */
     @PostMapping("/product")
     public R productStatusUp(@RequestBody List<SkuEsModel> skuEsModels){

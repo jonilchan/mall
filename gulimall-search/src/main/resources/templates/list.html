@@ -795,8 +795,8 @@
                                 <li th:each="brand : ${result.brands}">
                                     <a href="#"
                                        th:href="${'javascript:searchProducts(&quot;brandId&quot;,'+brand.brandId+')'}">
-                                        <img th:src="${brand.brandImg}" alt="">
-                                        <div th:text="${brand.brandName}">
+                                        <img th:src="${brand.brandImg}" alt="" style="padding: 0 0">
+                                        <div th:text="${brand.brandName}" style="margin-top: 7px">
                                             华为(HUAWEI)
                                         </div>
                                     </a>
@@ -2022,7 +2022,7 @@
 
     function searchProducts(name, value) {
         //原來的页面
-        location.href = replaceParamVal(location.href,name,value,true)
+        location.href = replacekeyWordVal(location.href,name,value)
     }
 
 
@@ -2066,6 +2066,13 @@
         return nUrl;
     };
 
+    // 替换指定传入参数的值,oUrl为链接,paramName为参数,replaceWith为新值
+    function  replacekeyWordVal (oUrl, paramName, replaceWith) {
+        var re = new RegExp('(' + paramName + '=)([^&]*)', 'gi')
+        var nUrl = oUrl.replace(re, paramName + '=' + replaceWith)
+        return nUrl
+    }
+
     $(".sort_a").click(function () {
         changeStyle(this);
         let sort = $(this).attr("sort");
@@ -2076,9 +2083,6 @@
     });
 
     function changeStyle(ele) {
-        // location.href = replaceParamVal(href, "pageNum", pn,flase);
-        // color: #333; border-color: #ccc; background: #fff
-        // color: #fff; border-color: #e4393c; background: #e4393c
         $(".sort_a").css({"color": "#333", "border-color": "#ccc", "background": "#fff"});
         $(".sort_a").each(function () {
             let text = $(this).text().replace("↓", "").replace("↑", "");
