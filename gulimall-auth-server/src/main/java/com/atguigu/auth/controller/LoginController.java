@@ -1,11 +1,14 @@
 package com.atguigu.auth.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.atguigu.auth.feign.MemberFeignService;
 import com.atguigu.auth.feign.ThirdPartyFeignService;
+import com.atguigu.auth.vo.UserLoginVo;
 import com.atguigu.auth.vo.UserRegistVo;
 import com.atguigu.common.constant.AuthServerConstant;
 import com.atguigu.common.exception.BizCodeEnum;
 import com.atguigu.common.utils.R;
+import com.atguigu.common.vo.MemberResponseVo;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,15 +42,16 @@ public class LoginController {
     @Resource
     private MemberFeignService memberFeignService;
 
-//    @GetMapping("/login.html")
-//    public String loginPage(){
-//        return "login";
-//    }
-//
-//    @GetMapping("/reg.html")
-//    public String regPage(){
-//        return "reg";
-//    }
+    @GetMapping("/login.html")
+    public String loginPage(HttpSession session){
+        Object attribute = session.getAttribute(AuthServerConstant.LOGIN_USER);
+        if (attribute == null){
+            return "login";
+        } else {
+            return "redirect:http://gulimall.com";
+        }
+    }
+
 
     @ResponseBody
     @GetMapping("/sms/sendcode")
@@ -81,7 +86,6 @@ public class LoginController {
         if (result.hasErrors()){
             Map<String, String> errors = result.getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
             attributes.addFlashAttribute("errors", errors);
-
             return "redirect:http://auth.gulimall.com/reg.html";
         }
 
@@ -122,4 +126,23 @@ public class LoginController {
             return "redirect:http://auth.gulimall.com/reg.html";
         }
     }
+
+    @PostMapping("/login")
+    public String login(UserLoginVo vo, RedirectAttributes attributes, HttpSession session){
+
+        R login = memberFeignService.login(vo);
+        if (login.getCode() == 0){
+            String json = JSON.toJSONString(login.get("data"));
+            MemberResponseVo data = JSON.parseObject(json, MemberResponseVo.class);
+            session.setAttribute(AuthServerConstant.LOGIN_USER, data);
+            return "redirect:http://gulimall.com";
+        } else {
+            HashMap<String, String> errors = new HashMap<>();
+            errors.put("msg", (String) login.get("msg"));
+            attributes.addFlashAttribute("errors", errors);
+            return "redirect:http://auth.gulimall.com/login.html";
+        }
+
+    }
+
 }

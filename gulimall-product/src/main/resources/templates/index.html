@@ -204,9 +204,9 @@
   <div class="header_main">
     <div class="header_banner">
       <div class="header_main_left">
-        <ul>
+        <ul style="padding: 3px 0">
           <li  th:each="category : ${categories}">
-            <a href="#" class="header_main_left_a"   th:attr="ctg-data = ${category.catId}"><b th:text="${category.name}">家用电器</b></a>
+            <a href="#" class="header_main_left_a"   th:attr="ctg-data = ${category.catId}"><b th:text="${category.name}"></b></a>
           </li>
         </ul>
       </div>
@@ -234,20 +234,22 @@
         </div>
         <div class="header_main_center_b">
           <a href="#"><img src="/static/index/img/5a13bf0bNe1606e58.jpg" /></a>
-          <a href="#"><img src="/static/index/img/5a154759N5385d5d6.jpg" /></a>
         </div>
       </div>
       <div class="header_main_right">
         <div class="header_main_right_user">
           <div class="user_info">
             <div class="user_info_tou">
-              <a href="#"><img class="" src="/static/index/img/touxiang.png"></a>
+<!--              <a href="#"><img class="" src=""></a>-->
+              <a href="#"><img th:if="${session.loginUser == null}" th:src="'/static/index/img/touxiang.png'" /></a>
+              <a href="#"><img th:if="${session.loginUser != null}" th:src="${session.loginUser.header}" /></a>
             </div>
             <div class="user_info_show">
               <p class="">Hi, 欢迎来到!</p>
               <p>
-                <a href="#" class="">登录</a>
-                <a href="#" class="">注册</a>
+                <a th:if="${session.loginUser != null}">[[${session.loginUser.nickname}]]</a>
+                <a th:if="${session.loginUser == null}" href="http://auth.gulimall.com/login.html">登录</a>
+                <a th:if="${session.loginUser == null}" href="http://auth.gulimall.com/reg.html">注册</a>
               </p>
             </div>
           </div>

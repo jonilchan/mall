@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 @Data
 public class UserRegistVo {
@@ -18,7 +17,8 @@ public class UserRegistVo {
     private String password;
 
     @NotEmpty(message = "手机号必须填写")
-    @Pattern(regexp = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\\\d{8}$")
+//    这个正则表达式有需要可以打开，这里暂时不做打开
+//    @Pattern(regexp = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\\\d{8}$")
     private String phone;
 
     @NotEmpty(message = "验证码不能为空")

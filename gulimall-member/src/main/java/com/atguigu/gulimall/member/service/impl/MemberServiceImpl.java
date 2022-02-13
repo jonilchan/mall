@@ -9,7 +9,9 @@ import com.atguigu.gulimall.member.entity.MemberLevelEntity;
 import com.atguigu.gulimall.member.exception.PhoneException;
 import com.atguigu.gulimall.member.exception.UserNameException;
 import com.atguigu.gulimall.member.service.MemberService;
+import com.atguigu.gulimall.member.vo.MemberLoginVo;
 import com.atguigu.gulimall.member.vo.MemberRegistVo;
+import com.atguigu.gulimall.member.vo.SocialUser;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -84,4 +86,45 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         }
     }
 
+    @Override
+    public MemberEntity login(MemberLoginVo vo) {
+
+        MemberEntity memberEntity = this.baseMapper.selectOne(new QueryWrapper<MemberEntity>().eq("username", vo.getLoginacct()));
+
+        if (memberEntity == null){
+            return null;
+        } else {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            boolean matches = passwordEncoder.matches(vo.getPassword(), memberEntity.getPassword());
+            if (matches){
+                return memberEntity;
+            } else {
+                return null;
+            }
+        }
+    }
+
+    @Override
+    public MemberEntity oauthLogin(SocialUser socialUser) {
+
+        //1、判断当前社交用户是否已经登录过系统
+        MemberEntity memberEntity = this.baseMapper.selectOne(new QueryWrapper<MemberEntity>().eq("social_uid", socialUser.getId()));
+
+        if (memberEntity != null) {
+            return memberEntity;
+        } else {
+            MemberEntity register = new MemberEntity();
+            //查询成功
+            register.setUsername(socialUser.getName());
+            register.setNickname(socialUser.getName());
+            register.setEmail(socialUser.getEmail());
+            register.setHeader(socialUser.getAvatarUrl());
+            register.setCreateTime(new Date());
+            register.setSocialUid(socialUser.getId());
+
+            //把用户信息插入到数据库中
+            this.baseMapper.insert(register);
+            return register;
+            }
+        }
 }

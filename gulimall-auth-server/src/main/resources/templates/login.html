@@ -64,11 +64,11 @@
                 <ul>
                     <li class="top_1">
                         <img src="/static/login/JD_img/user_03.png" class="err_img1"/>
-                        <input type="text" name="loginacct" placeholder=" 邮箱/用户名/已验证手机" class="user"/>
+                        <input type="text" name="loginacct" placeholder="用户名" class="user"/>
                     </li>
                     <li>
                         <img src="/static/login/JD_img/user_06.png" class="err_img2"/>
-                        <input type="password" name="password" placeholder=" 密码" class="password"/>
+                        <input type="password" name="password" placeholder="密码" class="password"/>
                     </li>
                     <li class="bri">
                         <a href="/static/login/">忘记密码</a>
@@ -81,18 +81,19 @@
         <div class="si_out">
             <ul>
                 <li>
-                    <a href="https://api.weibo.com/oauth2/authorize?client_id=2077705774&response_type=code&redirect_uri=http://auth.gulimall.com/oauth2.0/weibo/success">
-                        <img style="width: 50px;height: 18px;" src="/static/login/JD_img/weibo.png"/>
-<!--                        <span>weibo</span>-->
+<!--                    看起来是微博，其实是gitee的oauth-->
+                    <a href="https://gitee.com/oauth/authorize?client_id=57bda1aed3e1d30855b20ed80f4f61783aa840d4aea066f51d0bcca98d321637&redirect_uri=http://auth.gulimall.com/oauth/login&response_type=code">
+<!--                        <img style="width: 50px;height: 18px;" src="/static/login/JD_img/weibo.png"/>-->
+                        <span>Gitee登录</span>
                     </a>
                 </li>
-                <li class="f4"> |</li>
-                <li>
-                    <a href="http://localhost:8150/api/ucenter/wx/login">
-                        <img src="/static/login/JD_img/weixin.png"/>
-                        <span>微信</span>
-                    </a>
-                </li>
+<!--                <li class="f4"> |</li>-->
+<!--                <li>-->
+<!--                    <a href="http://localhost:8150/api/ucenter/wx/login">-->
+<!--                        <img src="/static/login/JD_img/weixin.png"/>-->
+<!--                        <span>微信</span>-->
+<!--                    </a>-->
+<!--                </li>-->
             </ul>
             </form>
 

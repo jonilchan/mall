@@ -9,5 +9,10 @@ spring:
     name: gulimall-search
   thymeleaf:
     cache: false
+  redis:
+    host: 192.168.5.94
+    port: 6379
+  session:
+    store-type: redis
 server:
   port: 12000
