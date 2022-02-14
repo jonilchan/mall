@@ -1,0 +1,41 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.5.94:8848
+      config:
+        server-addr: 192.168.5.94:8848
+        namespace: ab60430f-a34f-4e51-be39-7185ae449b72
+  application:
+    name: gulimall-cart
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.5.94
+    port: 6379
+  cache:
+    type: redis
+    redis:
+#      生存周期
+      time-to-live: 3600000
+#      使用前缀
+      use-key-prefix: true
+#      允许空值，防止缓存穿透
+      cache-null-values: true
+  session:
+    store-type: redis
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 13000
+logging:
+  level:
+    com.atguigu.gulimall: error
