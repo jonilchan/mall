@@ -12,6 +12,33 @@ spring:
         server-addr: 192.168.5.94:8848
   application:
     name: gulimall-order
+  rabbitmq:
+    host: 192.168.5.94
+    port: 5672
+    virtual-host: /
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+  redis:
+    host: 192.168.5.94
+    port: 6379
+  cache:
+    type: redis
+    redis:
+      #      生存周期
+      time-to-live: 3600000
+      #      使用前缀
+      use-key-prefix: true
+      #      允许空值，防止缓存穿透
+      cache-null-values: true
+  session:
+    store-type: redis
+  thymeleaf:
+    cache: false
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:

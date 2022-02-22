@@ -12,7 +12,7 @@ public class PurchaseDoneVo {
     /**
      * 采购单id
      */
-    @NotNull
+    @NotNull(message = "id不允许为空")
     private Long id;
     /**
      * 采购项列表

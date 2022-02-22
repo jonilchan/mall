@@ -101,15 +101,15 @@ gulimall
 - 修改本机的host文件，映射域名端口
 
 ```
-# gulimall
-192.168.77.130	gulimall.com
-192.168.77.130	search.gulimall.com
-192.168.77.130  item.gulimall.com
-192.168.77.130  auth.gulimall.com
-192.168.77.130  cart.gulimall.com
-192.168.77.130  order.gulimall.com
-192.168.77.130  member.gulimall.com
-192.168.77.130  seckill.gulimall.com
+#gulimall
+192.168.5.94 gulimall.com
+192.168.5.94 search.gulimall.com
+192.168.5.94 item.gulimall.com
+192.168.5.94 auth.gulimall.com
+192.168.5.94 cart.gulimall.com
+192.168.5.94  order.gulimall.com
+192.168.5.94  member.gulimall.com
+192.168.5.94  seckill.gulimall.com
 以上端口换成自己Linux的ip地址
 ```
 
@@ -139,4 +139,17 @@ gulimall
    https://easydoc.net/s/78237135/ZUqEdvA4/hKJTcbfd
    ```
 
-   
+
+
+
+## 配置地址
+
+
+
+1. [Nacos](http://192.168.5.94:8848/nacos/#/serviceManagement?dataId=&group=&appName=&namespace=&pageSize=&pageNo=)
+2. [Kibana](http://192.168.5.94:5601/app/kibana)
+3. [人人快速开发平台](http://localhost:8001/#/login)
+4. [RabbitMQ Management](http://192.168.5.94:15672/#/)
+
+
+
