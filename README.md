@@ -135,7 +135,7 @@ gulimall
 
 1. 网页API文档
 
-   ```http
+   ```
    https://easydoc.net/s/78237135/ZUqEdvA4/hKJTcbfd
    ```
 
