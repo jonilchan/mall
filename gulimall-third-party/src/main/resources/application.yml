@@ -1,8 +1,8 @@
 spring:
   cloud:
     alicloud:
-      access-key: LTAI5tGKCdwGqi147YEWKHem
-      secret-key: HO5hUDtfcwDJUAKdrbWMTBHfiubVv9
+      access-key: 
+      secret-key: 
       oss:
         endpoint: oss-cn-guangzhou.aliyuncs.com
         bucket: jonil
